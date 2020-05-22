@@ -1,5 +1,4 @@
 from collections import defaultdict
-
 def getgraph():
     org=defaultdict(list)
     rorg=defaultdict(list)
@@ -13,7 +12,7 @@ source=None
 def DFS_loop(graph,reversed=True):
     if reversed:
         global t
-        for vertex in range(9,0,-1):
+        for vertex in range(8,0,-1):
             if not explored[vertex]:
                 DFS(graph,vertex,reversed)
     else:
@@ -37,7 +36,6 @@ def DFS(graph,i,reversed):
         global source
         #print(source)
         leader[i]=source
-        
         #print(leader)
         explored[i]=True
         for dest in graph[i]:
@@ -63,7 +61,7 @@ DFS_loop(oo,reversed=False)
 total=[]
 pre=0
 asc= sorted(list(leader.values()))
-#print(asc)
+print(asc)
 for i in range(len(asc)-1):
     if asc[i] != asc[i+1]:
         total.append(i+1-pre)
