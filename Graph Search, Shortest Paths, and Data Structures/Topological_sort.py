@@ -13,3 +13,4 @@ def DFS(graph, s_vertex):
             DFS(graph, key)
         graph[key][2] = current_label
         current_label -= 1
+x=defaultdict(list)
