@@ -11,7 +11,7 @@ with open('./greedy/input/mst.txt') as file:
     noOfNodes, noOfEdges=[int(i) for i in lines[0].strip().split()];
     nodes=[];
     graph={}
-    for i in range(1,53):
+    for i in range(1,noOfEdges+1):
         detail= lines[i].strip().split();
         connection = tuple([int(i) for i in detail[:2]])
         for i in connection:
@@ -53,7 +53,7 @@ def findMinimumCost(mst):
         minimum_cost+=value;
     return minimum_cost;
 print(findMinimumCost(mst))
-
+#  -3612829
 # print(graph)
 # while(X!=A):
 #     ver,m=cheapeastEdge(A,B,graph);
