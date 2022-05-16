@@ -66,12 +66,12 @@ with open('./greedy/input/jobs.txt') as file:
     for i in range(1,n+1):
         old_list=lines[i].strip().split();
         new=[int(i) for i in old_list]
-        pivot=new[0]-new[1];
+        pivot=new[0]/new[1];
         new.append(pivot);
         ind =partition(scheduledJob,pivot,2);
         scheduledJob.insert(ind,new)
         sortByWeight(scheduledJob,ind,pivot);
-print(scheduledJob)
+# print(scheduledJob)
 
 def weighted_completion(arr):
     weighted_sum =0;

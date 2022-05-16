@@ -1,11 +1,15 @@
-# from copy import copy
+"""Copying the array deeply
+
+This function copy an array such that any change to one array doesn't reflect
+on the another array like in shallow.
+"""
 def deepcopy(arr):
     newArr=[];
     for i in range(len(arr)):
         newArr.append(arr[i]);
     return newArr;
 
-
+# Reading the data from the txt file
 with open('./greedy/input/mst.txt') as file:
     lines = file.readlines();
     noOfNodes, noOfEdges=[int(i) for i in lines[0].strip().split()];
@@ -21,6 +25,13 @@ with open('./greedy/input/mst.txt') as file:
         edge_cost= int(detail[2]);
         graph[connection]=edge_cost;
 
+
+"""Implementation of minimal cut property
+
+A cut of connected graph is minimal set of edges whose removal seperate the graph into two
+components. Minimal Cut Property says if one of the edges has weights smaller than other edges
+in cut then it is in MST
+"""
 def cheapeastEdge(visited,unvisited ,graph):
     mini=100000;
     vertices=tuple();
@@ -31,6 +42,12 @@ def cheapeastEdge(visited,unvisited ,graph):
                 vertices=key
     return(vertices, mini);
 
+
+""" Computing Minimum Spanning Tree
+
+Compute the minimum spanning Tree using Greedy approch for finding edges of minimum weights
+in cut of visited and unvisited graph.
+"""
 def MST(nodes,graph):
     A=[]
     B=deepcopy(nodes)
@@ -46,12 +63,14 @@ def MST(nodes,graph):
         MST[vertices]=m
     return MST;
 
-mst = MST(nodes,graph)
+# Finding weights of MST
 def findMinimumCost(mst):
     minimum_cost=0;
     for value in mst.values():
         minimum_cost+=value;
     return minimum_cost;
+
+mst = MST(nodes,graph)
 print(findMinimumCost(mst))
 #  -3612829
 # print(graph)
